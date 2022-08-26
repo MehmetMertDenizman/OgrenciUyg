@@ -72,9 +72,9 @@ namespace OkulYonetimUygulamasi_G034
         }
 
 
-        
+
         //  SAHTE ORTALAMA VE KİTAPLAR VE KİTAP SAYISI
-       
+
         void SecimAl()
         {
 
@@ -132,6 +132,7 @@ namespace OkulYonetimUygulamasi_G034
                 {
                     Console.WriteLine("Hatalı islem gerçeklestirildi. Tekrar deneyin.");
                 }
+                catch (System.OverflowException) { }
                 Console.WriteLine("\nMenüyü tekrar listelemek için \"liste\", çıkıs yapmak için \"çıkış\" yazın.\n");
             }
 
@@ -175,7 +176,7 @@ namespace OkulYonetimUygulamasi_G034
 
             }
 
-        } //OK 2222    1 2 3 İLE ÇAĞRILIYOR!!!!!!
+        } //OK 2222  OK  1 2 3 İLE ÇAĞRILIYOR!!!!!!
 
         void CinsiyeteGoreListele()
         {
@@ -394,17 +395,18 @@ namespace OkulYonetimUygulamasi_G034
             Console.WriteLine("10-Subedeki en basarılı 5 ögrenciyi listele -----------------------------------");
             while (true)
             {
-                Console.WriteLine("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+                Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
                 try
                 {
 
                     SUBE sube = (SUBE)Enum.Parse(typeof(SUBE), Console.ReadLine().ToUpper());
+                    Console.WriteLine("");
                     if (sube == SUBE.A || sube == SUBE.B || sube == SUBE.C)
                     {
                         Console.WriteLine(String.Format($"{"Şube",-6} {"No",-7} {"Adı Soyadı",-19} {"Not Ort.",-13} {"Okuduğu Kitap Say."}"));
                         Console.WriteLine("-------------------------------------------------------------------------------");
                         List<Ogrenci> SubeyeGoreListele = Okul.Ogrenciler.Where(x => x.Subesi == (SUBE)sube).OrderByDescending(x => x.NotOrtalamasi).ToList();
-                        SubeyeGoreListele.ForEach(x => Console.WriteLine(String.Format($"{x.Subesi,-6} {x.No.ToString(),-7} {x.Ad,-6} {x.Soyad,-12} {x.NotOrtalamasi,-13} {x.KitapSayisi}")));
+                        SubeyeGoreListele.ForEach(x => Console.WriteLine(String.Format($"{x.Subesi,-6} {x.No.ToString(),-7} {x.Ad.Substring(0, 1).ToUpper()}{x.Ad.Substring(1).ToLower(),-5}{x.Soyad.Substring(0, 1).ToUpper()}{x.Soyad.Substring(1).ToLower(),-12} {x.NotOrtalamasi,-13} {x.KitapSayisi.ToString()}")));
                         break;
                     }
                     else if (sube >= SUBE.C)
@@ -420,27 +422,28 @@ namespace OkulYonetimUygulamasi_G034
 
 
 
-        }//OK 10
+        }//OK 10 OK 1 2 3 İLE ÇAĞRILIYOR!!!!!!!!!!!!
         void SubedekiEnDusuk3Not()
         {
             Console.WriteLine("11-Subedeki en basarısız 3 ögrenciyi listele ----------------------------------");
             while (true)
             {
-                Console.WriteLine("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+                Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
                 try
                 {
 
                     SUBE sube = (SUBE)Enum.Parse(typeof(SUBE), Console.ReadLine().ToUpper());
+                    Console.WriteLine("");
                     if (sube == SUBE.A || sube == SUBE.B || sube == SUBE.C)
                     {
                         Console.WriteLine(String.Format($"{"Şube",-6} {"No",-7} {"Adı Soyadı",-19} {"Not Ort.",-13} {"Okuduğu Kitap Say."}"));
                         Console.WriteLine("-------------------------------------------------------------------------------");
                         List<Ogrenci> SubeyeGoreListele = Okul.Ogrenciler.Where(x => x.Subesi == (SUBE)sube).OrderBy(x => x.NotOrtalamasi).ToList();
-                        SubeyeGoreListele.ForEach(x => Console.WriteLine(String.Format($"{x.Subesi,-6} {x.No.ToString(),-7} {x.Ad,-6} {x.Soyad,-12} {x.NotOrtalamasi,-13} {x.KitapSayisi}")));
+                        SubeyeGoreListele.ForEach(x => Console.WriteLine(String.Format($"{x.Subesi,-6} {x.No.ToString(),-7} {x.Ad.Substring(0, 1).ToUpper()}{x.Ad.Substring(1).ToLower(),-5}{x.Soyad.Substring(0, 1).ToUpper()}{x.Soyad.Substring(1).ToLower(),-12} {x.NotOrtalamasi,-13} {x.KitapSayisi.ToString()}")));
                         break;
                     }
                     else if (sube >= SUBE.C)
-                    { Console.WriteLine("Daha küçük sayı gir"); }
+                    { }
                 }
                 catch (ArgumentException e)
                 {
@@ -448,18 +451,28 @@ namespace OkulYonetimUygulamasi_G034
                     Console.WriteLine("Hatali giris yapildi. Tekrar deneyin.");
                 }
             }
-        } // OK 11
+        } // OK 11 OK 1 2 3 İLE ÇAĞRILIYOR!!!!!!!!!!!!
         void NotOrtalaması()
         {
 
             Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör ----------------------------------");
+            Console.Write("Ögrencinin numarası: ");
+            int no = int.Parse(Console.ReadLine());
 
-            Okul.Ogrenciler.ForEach(x => Console.WriteLine(x.NotOrtalamasi));
+            foreach (Ogrenci item in Okul.Ogrenciler)
+            {
+                if (no == item.No)
+                {
+                    Console.WriteLine(item.NotOrtalamasiGet);
+
+                }
+
+            }
 
 
 
 
-        } // 12 olmadı
+        } // 12 olmadı !!!!!!!!!!!!!
 
         // WIP 12
         void OgrencininOkuduguSonKitap()
@@ -514,85 +527,101 @@ namespace OkulYonetimUygulamasi_G034
             SUBE sube = SUBE.Empty;
             int ogr_no;
             string ogrAd;
-            string ogrSoyad;
+            string ogrSoyAd;
             DateTime dogumTarihi;
             string ogrCinsiyet;
-            string ogrSube;
+            SUBE ogrSube;
             float NotOrtalamasi;
 
             while (kontrol3 == true)
             {
-                Console.Write("Ögrencinin numarası: ");
-
-                ogr_no = int.Parse(Console.ReadLine());
-
-                Console.Write("Ögrencinin adı: ");
-                ogrAd = Console.ReadLine();
-                Console.Write("Ögrencinin soyadı: ");
-                ogrSoyad = Console.ReadLine();
-                Console.WriteLine("Ögrencinin dogum tarihi: ");
-                dogumTarihi = DateTime.Parse(Console.ReadLine());
-                Console.WriteLine("Ögrencinin cinsiyeti:e/k: ");
-                ogrCinsiyet = Console.ReadLine().ToUpper();
-
-                bool kontrol = true;
-                while (kontrol == true)
+                try
                 {
-                    if (ogrCinsiyet == "E")
+                    Console.Write("Ögrencinin numarası: ");
+
+                    ogr_no = int.Parse(Console.ReadLine());
+                b:
+                    Console.Write("Ögrencinin adı: ");
+                    ogrAd = Console.ReadLine();
+                    foreach (char i in ogrAd) { if (!char.IsLetter(i)) { Console.WriteLine("Hatalı işlem. Tekrar girin."); goto b; } }
+
+                c:
+                    Console.Write("Ögrencinin soyadı: ");
+                    ogrSoyAd = Console.ReadLine();
+                    foreach (char i in ogrSoyAd) { if (!char.IsLetter(i)) { Console.WriteLine("Hatalı işlem. Tekrar girin."); goto c; } }
+                d:
+                    Console.Write("Ögrencinin dogum tarihi: ");
+
+                    bool a = DateTime.TryParse(Console.ReadLine(), out dogumTarihi);
+                    if (a == true) { }
+                    else { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin."); goto d; }
+
+                a:
+                    Console.Write("Ögrencinin cinsiyeti E/K: ");
+                    ogrCinsiyet = Console.ReadLine().ToUpper();
+
+                    bool kontrol = true;
+                    while (kontrol)
                     {
-                        cinsiyet = CINSIYET.Erkek;
+                        if (ogrCinsiyet == "E")
+                        {
+                            cinsiyet = CINSIYET.Erkek;
+                            kontrol = false;
+
+                        }
+                        else if (ogrCinsiyet == "K")
+                        {
+                            cinsiyet = CINSIYET.Kadin;
+                            kontrol = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Hatalı giriş yaptınız. ");
+                            goto a;
+                        }
                         kontrol = false;
 
                     }
-                    else if (ogrCinsiyet == "K")
+                e:
+                    Console.Write("Ögrencinin subesi (A/B/C): ");
+
+                    try { 
+                    ogrSube = (SUBE)Enum.Parse(typeof(SUBE), Console.ReadLine().ToUpper());
+
+
+                    bool kontrol1 = true;
+                    while (kontrol1)
                     {
-                        cinsiyet = CINSIYET.Kadin;
-                        kontrol = false;
+                        if (ogrSube == SUBE.A)
+                        {
+                            sube = SUBE.A;
+                            kontrol1 = false;
+                        }
+                        else if (ogrSube == SUBE.B)
+                        {
+                            sube = SUBE.B;
+                            kontrol1 = false;
+
+                        }
+                        else if (ogrSube == SUBE.C)
+                        {
+                            sube = SUBE.C;
+                            kontrol1 = false;
+                        }
+                        else if (ogrSube > SUBE.C)
+                            { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin."); goto e; }
+
                     }
-                    else
-                    {
-                        Console.WriteLine("Hatalı giriş yaptınız. ");
-
-                        Console.WriteLine("Ögrencinin cinsiyeti:e/k: ");
-                        kontrol = true;
-
                     }
-                    kontrol = false;
-
+                    catch (ArgumentException e) { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin.");goto e;  }
+                    catch (System.FormatException e) { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin.");  goto e; }
+                    okul.OgrenciEkle(ogr_no, ogrAd, ogrSoyAd, sube, cinsiyet, dogumTarihi, Adres.Il.İstanbul, Adres.Ilce.Gaziemir);
+                    Console.WriteLine("Öğrenci başarılı bir şekilde eklendi.");
+                    kontrol3 = false;
                 }
-                Console.WriteLine("Ögrencinin subesi (A/B/C): ");
-                ogrSube = Console.ReadLine().ToUpper();
+                catch (ArgumentException e) { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin."); }
+                catch (System.FormatException e) { Console.WriteLine("Hatalı giriş yapıldı. Tekrar deneyin.");   }
 
-                bool kontrol1 = true;
-                while (kontrol1 == true)
-                {
-                    if (ogrSube == "A")
-                    {
-                        sube = SUBE.A;
-                        kontrol1 = false;
-                    }
-                    else if (ogrSube == "B")
-                    {
-                        sube = SUBE.B;
-                        kontrol1 = false;
-
-                    }
-                    else if (ogrSube == "C")
-                    {
-                        sube = SUBE.C;
-                        kontrol1 = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Hatalı giriş yaptınız.");
-                        Console.WriteLine("Ögrencinin subesi (A/B/C): ");
-                        kontrol1 = true;
-                    }
-                    kontrol1 = false;
-                }
-                okul.OgrenciEkle(ogr_no, ogrAd, ogrSoyad, sube, cinsiyet, dogumTarihi, Adres.Il.İstanbul, Adres.Ilce.Gaziemir);
-                Console.WriteLine("Öğrenci başarılı bir şekilde eklendi.");
-                kontrol3 = false;
             }
 
 
@@ -605,7 +634,7 @@ namespace OkulYonetimUygulamasi_G034
 
 
 
-        }// OK 15
+        }// OK 15 OK ULAN OK ALLAHSIZ
 
         void OgrenciGuncelle()
         {
@@ -623,25 +652,32 @@ namespace OkulYonetimUygulamasi_G034
                         {
                             Console.Write("Öğrencinin adı: ");
                             string ad = Console.ReadLine();
-                            item.Ad = ad;
-                            Console.Write("Öğrencinin soyadı: ");
-                            string soyAd = Console.ReadLine();
-                            item.Soyad = soyAd;
-                            Console.Write("Ögrencinin dogum tarihi: ");
-                            DateTime dogum = DateTime.Parse(Console.ReadLine());
-                            Console.Write("Öğrencinin cinsiyeti (K/E): ");
-                            string cinsiyet = Console.ReadLine().ToUpper();
-                            if (cinsiyet == "K") { item.Cinsiyet = CINSIYET.Kadin; }
-                            else if (cinsiyet == "E") { item.Cinsiyet = CINSIYET.Erkek; }
-                            Console.Write("Ögrencinin subesi (A/B/C): ");
-                            string sube = Console.ReadLine().ToUpper();
-                            if (sube == "A") { item.Subesi = SUBE.A; }
-                            else if (sube == "B") { item.Subesi = SUBE.B; }
-                            else if (sube == "C") { item.Subesi = SUBE.C; }
-                            Console.WriteLine("\nÖğrenci güncellendi.");
-                            check = false;
-                            break;
+                            foreach (char i in ad)
+                            {
+                                if (!char.IsLetter(i))
+                                {
+                                    Console.WriteLine("Hatalı işlem. Tekrar girin.");
+                                }
+                                item.Ad = ad;
+                                Console.Write("Öğrencinin soyadı: ");
+                                string soyAd = Console.ReadLine();
+                                item.Soyad = soyAd;
+                                Console.Write("Ögrencinin dogum tarihi: ");
+                                DateTime dogum = DateTime.Parse(Console.ReadLine());
+                                Console.Write("Öğrencinin cinsiyeti (K/E): ");
+                                string cinsiyet = Console.ReadLine().ToUpper();
+                                if (cinsiyet == "K") { item.Cinsiyet = CINSIYET.Kadin; }
+                                else if (cinsiyet == "E") { item.Cinsiyet = CINSIYET.Erkek; }
+                                Console.Write("Ögrencinin subesi (A/B/C): ");
+                                string sube = Console.ReadLine().ToUpper();
+                                if (sube == "A") { item.Subesi = SUBE.A; }
+                                else if (sube == "B") { item.Subesi = SUBE.B; }
+                                else if (sube == "C") { item.Subesi = SUBE.C; }
+                                Console.WriteLine("\nÖğrenci güncellendi.");
+                                check = false;
+                                break;
 
+                            }
                         }
                         else if (no != item.No) { Console.WriteLine("Bu numarada bir ögrenci yok. Tekrar deneyin."); break; }
 
@@ -805,7 +841,7 @@ namespace OkulYonetimUygulamasi_G034
             //    Okul.NotEkle(no, ders, not);
             //}
 
-        } // OK 20,0000000000000000000000000000,000000000
+        } // 20 ÖĞRENCİYE ÖZEL DEĞİL
           // 
 
 
@@ -819,8 +855,8 @@ namespace OkulYonetimUygulamasi_G034
                 Console.WriteLine($"{ogr.Subesi,-7} {ogr.No.ToString(),-7} {ogr.Ad.Substring(0, 1).ToUpper()}{ogr.Ad.Substring(1).ToLower(),-5} {ogr.Soyad.Substring(0, 1).ToUpper()}{ogr.Soyad.Substring(1).ToLower(),-11} {ogr.NotOrtalamasi,-13} {ogr.KitapSayisi.ToString()}");
             }
 
-            
-             
+
+
         } //OK
     }
 }

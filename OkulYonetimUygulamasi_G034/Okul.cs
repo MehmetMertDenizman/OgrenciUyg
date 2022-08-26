@@ -35,16 +35,17 @@ namespace OkulYonetimUygulamasi_G034
                     if (!(no == ogrenci.No)) { Console.WriteLine(" Yok numara"); break; }
 
                     Console.Write("Not eklemek istediğiniz dersi giriniz: ");
-                    DersAdi dersAdi = (DersAdi)Enum.Parse(typeof(DersAdi), Console.ReadLine());  
+                    DersAdi dersAdi = (DersAdi)Enum.Parse(typeof(DersAdi), Console.ReadLine());
                     Console.Write("Eklemek istediginiz not adedi: ");
                     int noAdet = int.Parse(Console.ReadLine());
-                    for (int i = 1; i <= noAdet; i++) {
+                    for (int i = 1; i <= noAdet; i++)
+                    {
 
-                        Console.Write(i+".Notu girin: ");
+                        Console.Write(i + ".Notu girin: ");
                         float not = float.Parse(Console.ReadLine());
                         DersNotu dn = new DersNotu(dersAdi, not);
                         Ogrenci.Notlar.Add(dn);
-                        
+
                     }
                     Ogrenci.Notlar.ForEach(x => Console.WriteLine($"{x.DersAdi}   {x.Not}"));
                     break;
@@ -52,11 +53,11 @@ namespace OkulYonetimUygulamasi_G034
                 catch (System.InvalidOperationException) { Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); }
                 catch (System.ArgumentException) { Console.WriteLine("Ders adı yanlış girildi."); }
                 {
-                      }
-                
-               
-                
-                
+                }
+
+
+
+
             }
         } // Ders adı sadece Matematik şeklinde kabul ediyor.
         public Ogrenci OgrenciMi(int ogrNo)

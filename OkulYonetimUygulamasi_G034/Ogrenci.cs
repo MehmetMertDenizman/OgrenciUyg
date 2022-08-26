@@ -30,11 +30,11 @@ namespace OkulYonetimUygulamasi_G034
                 foreach (var item in Notlar)
                 {
                     sayac++;
-                    NotOrtalamasi +=  item.Not;
+                    topla +=  item.Not;
                     
                 }
                 NotOrtalamasi = topla / sayac;
-                Console.WriteLine(NotOrtalamasi);
+                 
                 return NotOrtalamasi; }
              
             
