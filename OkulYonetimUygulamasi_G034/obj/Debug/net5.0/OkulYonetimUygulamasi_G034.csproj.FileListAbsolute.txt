@@ -1,0 +1,16 @@
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.csproj.AssemblyReference.cache
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.AssemblyInfoInputs.cache
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.AssemblyInfo.cs
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.csproj.CoreCompileInputs.cache
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.exe
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.deps.json
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.runtimeconfig.json
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.runtimeconfig.dev.json
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.dll
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\bin\Debug\net5.0\OkulYonetimUygulamasi_G034.pdb
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.dll
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\refint\OkulYonetimUygulamasi_G034.dll
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.pdb
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\OkulYonetimUygulamasi_G034.genruntimeconfig.cache
+C:\Users\Adm\Downloads\OkulYonetimUygulamasi_G034\OkulYonetimUygulamasi_G034\obj\Debug\net5.0\ref\OkulYonetimUygulamasi_G034.dll

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YlSmYU3nf3+280R9w2lkFArP7UCMbxAALM8drL/w5JwteCZ+tcCc9d/S4ekyrN4cYgwe9Q/ZjO39wpgqNKXD6Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Adm\\Downloads\\OkulYonetimUygulamasi_G034\\OkulYonetimUygulamasi_G034\\OkulYonetimUygulamasi_G034.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
